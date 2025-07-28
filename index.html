@@ -3,300 +3,269 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kids  Center</title>
+<title>Kids Fun Center - Responsive Menü</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
   body {
-    margin: 0;
-    background: #f0f8ff;
-    font-family: 'Comic Neue', cursive, sans-serif;
+    font-family: 'Fredoka One', cursive, sans-serif;
+    background: linear-gradient(135deg, #f9f871, #ff6f91);
     color: #333;
-    display: flex;
     min-height: 100vh;
-  }
-
-  /* Sol menyu */
-  header {
-    width: 220px;
-    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-    box-shadow: 2px 0 8px rgba(0,0,0,0.15);
-    padding-top: 50px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    top: 0; left: 0; bottom: 0;
-    user-select: none;
+    flex-direction: row;
   }
 
-  .logo {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 40px;
-    letter-spacing: 3px;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-  }
-
+  /* Menü konteyneri - həm solda həm yuxarı */
   nav {
-    width: 100%;
+    background: #ff4081;
+    padding: 20px 10px;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
     display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+  }
+
+  /* Mobil üçün solda sütun */
+  .nav-vertical {
+    width: 220px;
     flex-direction: column;
   }
 
-  nav a {
-    padding: 18px 30px;
-    margin: 6px 20px;
-    border-radius: 30px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    background: rgba(255,255,255,0.2);
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    transition: background 0.4s ease, transform 0.2s ease;
+  /* Desktop üçün yuxarıda */
+  .nav-horizontal {
+    width: 100%;
+    justify-content: center;
+    flex-direction: row;
+    box-shadow: none;
+  }
+
+  nav button {
+    background: #ff80ab;
+    border: none;
+    border-radius: 20px;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
     display: flex;
     align-items: center;
-    gap: 12px;
-    cursor: pointer;
+    gap: 10px;
+    box-shadow: 0 5px 10px #ff408166;
+    white-space: nowrap;
   }
 
-  nav a:hover {
-    background: #fff;
-    color: #f97316;
+  nav button:hover, nav button.active {
+    background: #e040fb;
     transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(249,115,22,0.6);
+    box-shadow: 0 8px 15px #e040fbaa;
   }
 
-  nav a.active {
-    background: #fff;
-    color: #f97316;
-    box-shadow: 0 6px 12px rgba(249,115,22,0.8);
+  nav button img {
+    width: 30px; height: 30px;
   }
 
-  /* İkonlar üçün sadə svg */
-  nav a svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-  }
-
+  /* Əsas kontent */
   main {
-    margin-left: 220px;
-    padding: 60px 30px 40px;
     flex-grow: 1;
-    background: #fff;
+    padding: 30px;
+    background: #fff6f9;
+    border-radius: 0 40px 40px 0;
     overflow-y: auto;
   }
 
-  section {
-    display: none;
-    animation: fadeIn 0.3s ease forwards;
+  main h1 {
+    color: #ff4081;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 3px #ff80ab;
   }
-  section.active {
+
+  main section {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  main section.active {
     display: block;
   }
 
-  /* Kart konteyneri */
+  /* Kartlar */
   .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 25px;
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .card {
-    background: #fffbf5;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(255,149,0,0.2);
-    padding: 15px 15px 30px;
+    background: #ff80ab;
+    border-radius: 25px;
+    box-shadow: 0 8px 15px #ff408180;
+    padding: 15px;
     text-align: center;
+    color: white;
+    font-weight: 700;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(255,149,0,0.35);
+    box-shadow: 0 15px 25px #e040fbcc;
   }
 
   .card img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    margin-bottom: 15px;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
     user-select: none;
   }
 
-  .card p {
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #d97706;
-    text-shadow: 1px 1px 0 rgba(255,255,255,0.9);
-  }
-
-  h1 {
-    font-size: 2.6rem;
-    color: #f97316;
-    text-shadow: 1px 1px 6px #fbbf24;
-  }
-
-  p.intro {
-    font-size: 1.1rem;
-    color: #555;
-    margin-top: 10px;
-  }
-
-  /* Kontakt form */
+  /* Form */
   form {
-    margin-top: 25px;
-    max-width: 400px;
+    max-width: 360px;
+    margin: 20px auto 0;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 15px;
   }
-
   label {
     font-weight: 700;
-    font-size: 1.1rem;
-    color: #f97316;
+    font-size: 1.2rem;
+    color: #ff4081;
   }
-
   input[type="tel"] {
-    padding: 14px 16px;
-    border-radius: 12px;
-    border: 2px solid #f97316;
+    padding: 12px;
+    border-radius: 20px;
+    border: 2px solid #ff80ab;
     font-size: 1.1rem;
+    text-align: center;
+    outline: none;
     transition: border-color 0.3s ease;
   }
   input[type="tel"]:focus {
-    border-color: #d97706;
-    outline: none;
+    border-color: #e040fb;
   }
-
   button[type="submit"] {
-    background: #f97316;
+    background: #ff4081;
     border: none;
-    padding: 14px 0;
-    font-weight: 700;
-    font-size: 1.25rem;
+    padding: 15px;
+    font-size: 1.3rem;
     color: white;
-    border-radius: 14px;
+    border-radius: 25px;
+    font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 5px 15px #f97316aa;
+    box-shadow: 0 8px 20px #ff80abaa;
     transition: background-color 0.3s ease;
   }
   button[type="submit"]:hover {
-    background: #d97706;
+    background: #e040fb;
   }
 
+  /* Animasiya */
   @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
   }
 
   /* Responsive */
-  @media(max-width: 720px) {
-    header {
-      width: 100%;
-      height: 70px;
-      flex-direction: row;
-      padding: 0 15px;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-      z-index: 9999;
+  @media (max-width: 768px) {
+    body {
+      flex-direction: row; /* hələ solda qalacaq */
     }
+
     nav {
+      /* mobil üçün solda sütun */
+      width: 220px;
+      height: 100vh;
       position: fixed;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-      flex-direction: row;
-      overflow-x: auto;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      height: 60px;
-      padding: 0;
-      margin: 0;
+      top: 0; left: 0;
+      flex-direction: column;
+      padding-top: 40px;
+      box-shadow: 4px 0 10px rgba(0,0,0,0.2);
+      background: #ff4081;
+      z-index: 10000;
     }
-    nav a {
-      flex-shrink: 0;
-      margin: 0 10px;
-      border-radius: 18px;
-      padding: 10px 20px;
-      font-size: 1.1rem;
-    }
+
     main {
-      margin: 70px 15px 20px 15px;
+      margin-left: 220px;
+      padding: 30px 20px;
+      border-radius: 0 40px 40px 0;
     }
   }
 
+  @media (min-width: 769px) {
+    body {
+      flex-direction: column;
+    }
+    nav {
+      width: 100%;
+      height: auto;
+      position: relative;
+      flex-direction: row;
+      justify-content: center;
+      padding: 15px 0;
+      box-shadow: none;
+      border-radius: 0;
+      background: #ff4081;
+    }
+    main {
+      margin-left: 0;
+      padding: 40px 60px 60px;
+      border-radius: 0;
+    }
+  }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">Kids Center</div>
-  <nav id="menu">
-    <a href="#" data-section="home" class="active">
-      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-      Əsas
-    </a>
-    <a href="#" data-section="classes">
-      <svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zM4 10h16v2H4zM4 14h16v2H4z"/></svg>
-      Məşğələlər
-    </a>
-    <a href="#" data-section="teachers">
-      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-      Müəllimlər
-    </a>
-    <a href="#" data-section="about">
-      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-      Haqqımızda
-    </a>
-    <a href="#" data-section="contact">
-      <svg viewBox="0 0 24 24"><path d="M21 8V7l-3 2-2-2-4 4-3-3-4 4v5h18z"/></svg>
-      Əlaqə
-    </a>
-  </nav>
-</header>
+<nav id="menu" class="nav-vertical">
+  <button class="active" data-target="home"><img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Ev"> Əsas</button>
+  <button data-target="classes"><img src="https://cdn-icons-png.flaticon.com/512/167/167707.png" alt="Məşğələlər"> Məşğələlər</button>
+  <button data-target="teachers"><img src="https://cdn-icons-png.flaticon.com/512/2942/2942926.png" alt="Müəllimlər"> Müəllimlər</button>
+  <button data-target="about"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828961.png" alt="Haqqında"> Haqqımızda</button>
+  <button data-target="contact"><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Əlaqə"> Əlaqə</button>
+</nav>
 
 <main>
   <section id="home" class="active">
-    <h1>Xoş gəlmisiniz!</h1>
-    <p class="intro">Kids  Center-ə xoş gəlmisiniz! Burada əyləncəli təhsil proqramları sizi gözləyir.</p>
+    <h1>Kids Fun Center-ə xoş gəlmisiniz!</h1>
+    <p style="text-align:center; font-weight:bold; font-size:1.3rem; color:#d81b60;">
+      Burada uşaqlar üçün əyləncəli və maraqlı təhsil proqramları mövcuddur.
+    </p>
   </section>
 
   <section id="classes">
     <h1>Məşğələlər</h1>
     <div class="card-container">
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2504/2504910.png" alt="Riyaziyyat" />
-        <p>Riyaziyyat</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/2942/2942926.png" alt="Riyaziyyat" />
+        Riyaziyyat
       </div>
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2913/2913469.png" alt="Fizika" />
-        <p>Fizika</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/3201/3201068.png" alt="Fizika" />
+        Fizika
       </div>
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2913/2913482.png" alt="Kimya" />
-        <p>Kimya</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/3050/3050523.png" alt="Kimya" />
+        Kimya
       </div>
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/3208/3208784.png" alt="Tarix" />
-        <p>Tarix</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140927.png" alt="Tarix" />
+        Tarix
       </div>
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055672.png" alt="Coğrafiya" />
-        <p>Coğrafiya</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/3076/3076128.png" alt="Coğrafiya" />
+        Coğrafiya
       </div>
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="İnformatika" />
-        <p>İnformatika</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140710.png" alt="İnformatika" />
+        İnformatika
       </div>
     </div>
   </section>
@@ -305,73 +274,85 @@
     <h1>Müəllimlər</h1>
     <div class="card-container">
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="Elçin Məllim" />
-        <p>Elçin Məllim</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922565.png" alt="Elçin Məllim" />
+        Elçin Məllim
       </div>
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/1946/1946420.png" alt="Aynur Məllimə" />
-        <p>Aynur Məllimə</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png" alt="Aynur Məllimə" />
+        Aynur Məllimə
       </div>
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/1946/1946392.png" alt="Murad Məllim" />
-        <p>Murad Məllim</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922509.png" alt="Murad Məllim" />
+        Murad Məllim
       </div>
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/1946/1946399.png" alt="Leyla Məllimə" />
-        <p>Leyla Məllimə</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922574.png" alt="Leyla Məllimə" />
+        Leyla Məllimə
       </div>
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/1946/1946378.png" alt="Samir Məllim" />
-        <p>Samir Məllim</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922561.png" alt="Samir Məllim" />
+        Samir Məllim
       </div>
       <div class="card">
-        <img src="https://cdn-icons-png.flaticon.com/512/1946/1946385.png" alt="Fərid Məllim" />
-        <p>Fərid Məllim</p>
+        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922563.png" alt="Fərid Məllim" />
+        Fərid Məllim
       </div>
     </div>
   </section>
 
   <section id="about">
     <h1>Haqqımızda</h1>
-    <p class="intro">Kids Fun Center 2005-ci ildən bəri uşaqlar üçün ən yaxşı təhsil mühitini yaradır. Burada hər uşaq öz potensialını kəşf edir!</p>
+    <p style="font-size:1.2rem; line-height:1.6; margin-top:20px;">
+      Kids Fun Center 2005-ci ildən bəri uşaqlar üçün ən yaxşı təhsil mühitini yaradır. Burada uşaqlar əylənərək öyrənirlər!
+    </p>
   </section>
 
   <section id="contact">
     <h1>Əlaqə</h1>
-    <p class="intro">Bizimlə əlaqə üçün nömrənizi daxil edin, tezliklə sizinlə əlaqə saxlayacağıq.</p>
+    <p style="font-weight:bold; margin-bottom: 15px;">Nömrənizi yazın, biz sizinlə əlaqə saxlayacağıq!</p>
     <form action="https://formsubmit.co/seninemail@gmail.com" method="POST" target="_blank">
-      <label for="phone">Əlaqə nömrəsi:</label>
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-        placeholder="+994 XX XXX XX XX"
+      <input type="tel" name="phone" placeholder="+994 XX XXX XX XX" required
         pattern="^\+994\s\d{2}\s\d{3}\s\d{2}\s\d{2}$"
-        title="+994 XX XXX XX XX formatında daxil edin"
-        required
-      />
-      <button type="submit">Göndər</button>
+        title="+994 XX XXX XX XX formatında daxil edin" style="padding:12px; border-radius:20px; border:2px solid #ff80ab; font-size:1.1rem; width:100%;">
+      <button type="submit" style="
+        background:#ff4081; color:#fff; font-weight:700; border:none;
+        padding:15px; border-radius:25px; font-size:1.3rem; cursor:pointer;
+        box-shadow:0 8px 20px #ff80abaa; transition:background-color 0.3s ease;">Göndər</button>
     </form>
   </section>
 </main>
 
 <script>
-  const menuLinks = document.querySelectorAll('nav a');
+  const buttons = document.querySelectorAll('nav button');
   const sections = document.querySelectorAll('main section');
 
-  menuLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-      menuLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-
-      const targetId = link.getAttribute('data-section');
+      const target = btn.getAttribute('data-target');
       sections.forEach(sec => {
-        sec.classList.toggle('active', sec.id === targetId);
+        if (sec.id === target) sec.classList.add('active');
+        else sec.classList.remove('active');
       });
     });
   });
+
+  // Responsive menyu sinfi dəyişdir
+  function handleResize() {
+    const nav = document.getElementById('menu');
+    if(window.innerWidth <= 768) {
+      nav.classList.remove('nav-horizontal');
+      nav.classList.add('nav-vertical');
+    } else {
+      nav.classList.remove('nav-vertical');
+      nav.classList.add('nav-horizontal');
+    }
+  }
+
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('load', handleResize);
 </script>
 
 </body>
